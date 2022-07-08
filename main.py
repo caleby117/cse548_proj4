@@ -14,7 +14,7 @@ class Scenario:
         self.train = train
         self.test = test
         self.cmd = f'python3 fnn_sample.py --traindata {self.dir}{self.train} '\
-            f'--testdata {self.dir}{self.test} -s {self.name} -e 1'
+            f'--testdata {self.dir}{self.test} -s {self.name} -e 5'
     
     def train_n_test(self):
         # Execute the training and testing of the CNN for this scenario
