@@ -9,6 +9,7 @@ Updated on Wed Jan 29 10:18:09 2020
 from copy import deepcopy
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
+# make some of the repeated tasks functional
 def load_data_and_labels(data_path):
     dataset = pd.read_csv(data_path, header=None)
     X = dataset.iloc[:, 0:-2].values
@@ -89,9 +90,10 @@ test_data = encode_data(test_data)
 # The following code work Python 3.7 or newer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
-protocol_cats_c1 = len(pd.read_csv('./featureMappingsAll/1.csv', header=None))
-type_cats_c2 = len(pd.read_csv('./featureMappingsAll/2.csv', header=None))
-state_cats_c3 = len(pd.read_csv('./featureMappingsAll/3.csv', header=None))
+#OneHotEncode all the categorical data properly
+protocol_cats_c1 = len(pd.read_csv('./featureMappingsAll/1.txt', header=None))
+type_cats_c2 = len(pd.read_csv('./featureMappingsAll/2.txt', header=None))
+state_cats_c3 = len(pd.read_csv('./featureMappingsAll/3.txt', header=None))
 colsEncoder = OneHotEncoder(categories=[list(range(protocol_cats_c1)), \
     list(range(type_cats_c2)), list(range(state_cats_c3))])
 ct = ColumnTransformer(
@@ -190,6 +192,13 @@ import matplotlib.pyplot as plt
 
 # Get the filename of train and test fig
 scenario = clargs.scenario if clargs.scenario else ''
+
+# save the scenario results.
+with open(f"{scenario}_result.txt", 'w') as f:
+    f.write(str(cm))
+    f.write('\n')
+    acc = (cm[0][0]+cm[1][1]) / (sum(cm[0])+sum(cm[1]))
+    f.write(f"Accuracy: {acc}")
 
 # You can plot the accuracy
 print('Plot the accuracy')

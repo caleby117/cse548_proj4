@@ -12,7 +12,7 @@ import random
 import os
 
 # Define variables
-file_extension='.csv'  # .csv or .txt
+file_extension='.txt'  # .csv or .txt
 file_folder='./'
 
 # load files and content into X
@@ -31,7 +31,7 @@ for j in range(nFeatures):
         floatValue = float(X[i, j])
     except: 
         stringColumns.append(j)
-print("String Columns are : " + str(stringColumns)) # print string column indexes starting from 0
+#print("String Columns are : " + str(stringColumns)) # print string column indexes starting from 0
 
 
 shouldSaveFeatureMappings = input("Do you want to save feature mappings result[y/n]?")
@@ -39,16 +39,16 @@ if shouldSaveFeatureMappings == 'y':
     directory_featureMapping = input("What local directory to store the created feature mappings?\n")
     if not os.path.exists(directory_featureMapping):
         os.mkdir(directory_featureMapping)
-    print("************************************************")
+    #print("************************************************")
     # the for loop store each string column into a file with name of the column index
     for j in stringColumns:
         distinctValues = []
-        print("Distinct values for feature index " + str(j) + " are: ")
+        #print("Distinct values for feature index " + str(j) + " are: ")
         for i in range(len(X)):
             if X[i, j] not in distinctValues:
                 distinctValues.append(str(X[i, j]))
                 #If header exists prints, feature name, else prints feature value as an example
-                print(str(distinctValues))
+                #print(str(distinctValues))
 
 
         if shouldSaveFeatureMappings == 'y':

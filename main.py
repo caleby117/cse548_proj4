@@ -14,7 +14,7 @@ class Scenario:
         self.train = train
         self.test = test
         self.cmd = f'python3 fnn_sample.py --traindata {self.dir}{self.train} '\
-            f'--testdata {self.dir}{self.test} -s {self.name} -e 5'
+            f'--testdata {self.dir}{self.test} -s {self.name} -e 3'
     
     def train_n_test(self):
         # Execute the training and testing of the CNN for this scenario
@@ -29,11 +29,11 @@ class Scenario:
 
 def main():
     scenario1 = Scenario('1','./scenario1/', \
-        'Training-a1-a3_standardized.csv', 'Testing-a2-a4_standardized.csv')
+        'Training-a1-a3_standardized.txt', 'Testing-a2-a4_standardized.txt')
     scenario2 = Scenario('2','./scenario2/', \
-        'Training-a1-a2_standardized.csv', 'Testing-a1_standardized.csv')
+        'Training-a1-a2_standardized.txt', 'Testing-a1_standardized.txt')
     scenario3 = Scenario('3','./scenario3/', \
-        'Training-a1-a2_standardized.csv', 'Testing-a1-a2-a3_standardized.csv')
+        'Training-a1-a2_standardized.txt', 'Testing-a1-a2-a3_standardized.txt')
     
     all_scenarios = [scenario1, scenario2, scenario3]
     
